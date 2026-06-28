@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socials - Kay's Kitchen</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="kitchen-page">
+        
+        <div class="string1"></div>
+        <div class="string2"></div>
+        <div class="paku"></div>
+
+        <div class="whiteboard">
+            <h1 class="page-title">Come say hi! Here's where I hang out:</h1>
+            <p class="back-link"><a href="index.html">← Slip back into the Kitchen</a></p>
+
+            <div class="socials-row">
+                
+                <a href="https://www.linkedin.com/in/khaira-zalfa-naila-9a4568264" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="linkedin">
+                        <img src="Images/linkedin.png" alt="Linkedin icon">
+                        <p>LinkedIn</p>
+                    </div>
+                </a>
+
+                <div class="tele" 
+                     onmouseenter="showTelegramTooltip()" 
+                     onmouseleave="hideTelegramTooltip()" 
+                     onclick="copyTelegramHandle()">
+                    <img src="Images/tele.png" alt="Telegram">
+                    <p>Telegram</p>
+                </div>
+
+                <a href="https://www.instagram.com/khairasaurus?igsh=MTE5NmRmanNkNmVnYg%3D%3D&utm_source=qr" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="insta">
+                        <img src="Images/insta.png" alt="Instagram">
+                        <p>Instagram</p>
+                    </div>
+                </a>
+
+            </div> </div> <div class="email-cloud-tooltip" id="telegram-tooltip">Copy handle!</div>
+
+        <div class="green-counter"></div>
+
+        <div class="jar">
+            <img src="Images/jar.png" alt="Jar">
+        </div>
+
+    </div> <audio id="magnet-sound" src="audio/ding.wav"></audio>
+
+    <script>
+        // 1. Hover Sound Engine
+        function playDing() {
+            var sound = document.getElementById("magnet-sound");
+            sound.currentTime = 0; 
+            sound.play();          
+        }
+
+        // Connects hover sound loops directly to your click links
+        document.querySelectorAll('.linkedin, .insta').forEach(item => {
+            item.addEventListener('mouseenter', playDing);
+        });
+
+        // 2. Clipboard String Injection
+        function copyTelegramHandle() {
+            var handleText = "@kayrawrsaurus";
+            navigator.clipboard.writeText(handleText).then(function() {
+                var tooltip = document.getElementById("telegram-tooltip");
+                tooltip.innerText = "Username copied! ✨"; 
+                setTimeout(function() {
+                    tooltip.innerText = "Copy handle!";
+                }, 2000);
+            });
+        }
+
+        // 3. Javascript Helper Visibility States
+        function showTelegramTooltip() {
+            playDing(); 
+            document.getElementById("telegram-tooltip").classList.add("show");
+        }
+
+        function hideTelegramTooltip() {
+            document.getElementById("telegram-tooltip").classList.remove("show");
+        }
+    </script>
+</body>
+</html>
